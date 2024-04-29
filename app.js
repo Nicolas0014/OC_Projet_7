@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
-
+const helmet = require('helmet');
 require('dotenv').config()
 
 const bookRoutes = require('./routes/bookRoutes');
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/book', bookRoutes);
+app.use('/api/books', bookRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
